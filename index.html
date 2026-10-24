@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Just a human with a domain and a few things on the go. A small corner of the internet, kept simple.">
+  <meta name="theme-color" content="#101916">
+  <meta name="color-scheme" content="dark">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline'; style-src 'unsafe-inline'; img-src data:; connect-src 'none'; base-uri 'none'; form-action 'none'">
+  <meta name="referrer" content="no-referrer">
+  <link rel="canonical" href="https://kirky.me/">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%23101916'/%3E%3Cpath d='m15 20 13 12-13 12m20 0h15' fill='none' stroke='%23a5d4a1' stroke-width='5'/%3E%3C/svg%3E">
+  <title>Kirky — a small corner of the internet</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0; min-height: 100vh; min-height: 100svh;
+      padding: 32px 7vw; display: grid; grid-template-rows: auto 1fr auto;
+      background: #101916; color: #dce7df;
+      font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
+      -webkit-font-smoothing: antialiased;
+    }
+    header { display: flex; justify-content: space-between; gap: 20px; font-size: 12px; color: #91a99c; }
+    main { align-self: center; max-width: 700px; padding: 64px 0; min-width: 0; }
+    .prompt { color: #a5d4a1; font-size: 13px; margin-bottom: 32px; }
+    h1 { font-size: clamp(44px, 9vw, 80px); font-weight: 500; letter-spacing: -.06em; margin: 0 0 28px; line-height: 1.1; }
+    p { color: #a4b8aa; font-size: 15px; line-height: 1.9; margin: 0; }
+    .cursor { display: inline-block; width: .52em; height: .86em; background: #a5d4a1; vertical-align: -.04em; margin-left: 10px; }
+    button { display: block; font: inherit; cursor: pointer; border: 1px solid #4d6b58; background: transparent; color: #bdd9c3; padding: 12px 17px; margin-top: 36px; transition: transform .15s; }
+    button:hover { transform: translateY(-2px); border-color: #a5d4a1; }
+    button:focus-visible { outline: 3px solid #a5d4a1; outline-offset: 6px; }
+    button[hidden] { display: none; }
+    #reply { min-height: 48px; margin-top: 20px; color: #a5d4a1; font-size: 13px; line-height: 1.8; }
+    footer { color: #91a99c; font-size: 11px; line-height: 1.8; }
+    @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+  </style>
+</head>
+<body>
+  <header><span>~/kirky.me</span><span>personal space</span></header>
+  <main>
+    <div class="prompt">kirky@internet:~$ hello</div>
+    <h1>Not much to<br>see here.<span class="cursor" aria-hidden="true"></span></h1>
+    <p>Just a human with a domain<br>and a few things on the go.</p>
+    <button id="hello" type="button" aria-controls="reply" hidden>[ say hello ]</button>
+    <div id="reply" role="status" aria-live="polite"></div>
+  </main>
+  <footer>No trackers. No fuss. Just a page.</footer>
+  <script>
+    const hello = document.getElementById('hello');
+    hello.hidden = false;
+    hello.addEventListener('click', () => {
+      document.getElementById('reply').textContent = '> Hello back. Have a good one.';
+      hello.textContent = '[ message received ]';
+    });
+  </script>
+</body>
+</html>
